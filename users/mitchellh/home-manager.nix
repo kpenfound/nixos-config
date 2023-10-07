@@ -123,8 +123,8 @@ in {
     config = {
       whitelist = {
         prefix= [
-          "$HOME/code/go/src/github.com/hashicorp"
-          "$HOME/code/go/src/github.com/mitchellh"
+          "$HOME/github.com/kpenfound"
+          "$HOME/github.com/dagger"
         ];
 
         exact = ["$HOME/.envrc"];
@@ -187,7 +187,7 @@ in {
       color.ui = true;
       core.askPass = ""; # needs to be empty to use terminal for ask pass
       credential.helper = "store"; # want to make this more secure
-      github.user = "mitchellh";
+      github.user = "kpenfound";
       push.default = "tracking";
       init.defaultBranch = "main";
     };
@@ -195,8 +195,8 @@ in {
 
   programs.go = {
     enable = true;
-    goPath = "code/go";
-    goPrivate = [ "github.com/mitchellh" "github.com/hashicorp" "rfc822.mx" ];
+#    goPath = "code/go";
+    goPrivate = [ "github.com/kpenfound" "github.com/hashicorp" "rfc822.mx" ];
   };
 
   programs.tmux = {
