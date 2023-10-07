@@ -196,7 +196,7 @@ in {
   programs.go = {
     enable = true;
 #    goPath = "code/go";
-    goPrivate = [ "github.com/kpenfound" "github.com/hashicorp" "rfc822.mx" ];
+    goPrivate = [ "github.com/kpenfound" ];
   };
 
   programs.tmux = {
