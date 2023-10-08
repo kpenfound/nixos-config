@@ -54,6 +54,7 @@ in {
     pkgs.firefox
     pkgs.rofi
     pkgs.zathura
+    pkgs._1password
     pkgs.xfce.xfce4-terminal
   ]);
 
@@ -106,7 +107,8 @@ in {
 
     shellAliases = {
       ga = "git add";
-      gc = "git commit";
+      gc = "git commit --gpg-sign --signoff";
+      gcm = "git commit --gpg-sign --signoff --message";
       gco = "git checkout";
       gcp = "git cherry-pick";
       gdiff = "git diff";
@@ -144,7 +146,8 @@ in {
 
     shellAliases = {
       ga = "git add";
-      gc = "git commit";
+      gc = "git commit --gpg-sign --signoff";
+      gcm = "git commit --gpg-sign --signoff --message";
       gco = "git checkout";
       gcp = "git cherry-pick";
       gdiff = "git diff";
@@ -172,11 +175,11 @@ in {
   programs.git = {
     enable = true;
     userName = "Kyle Penfound";
-    userEmail = "kylepenfound@pm.me";
-#    signing = {
-#      key = "523D5DC389D273BC";
-#      signByDefault = true;
-#    };
+    userEmail = "kyle@dagger.io";
+    signing = {
+      key = "70FD4F54AFB76D11";
+      signByDefault = true;
+    };
     aliases = {
       cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d";
       prettylog = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
@@ -190,6 +193,10 @@ in {
       github.user = "kpenfound";
       push.default = "tracking";
       init.defaultBranch = "main";
+      push.autosetupremote = true;
+      pull.rebase = true;
+      commit.gpgsign = true;
+      checkout.defaultremote = "origin";
     };
   };
 
@@ -231,7 +238,7 @@ in {
         { key = "C"; mods = "Command"; action = "Copy"; }
         { key = "Key0"; mods = "Command"; action = "ResetFontSize"; }
         { key = "Equals"; mods = "Command"; action = "IncreaseFontSize"; }
-        { key = "Subtract"; mods = "Command"; action = "DecreaseFontSize"; }
+        { key = "Minus"; mods = "Command"; action = "DecreaseFontSize"; }
       ];
     };
   };
