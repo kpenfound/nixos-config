@@ -5,6 +5,11 @@ let
   # of a hack, I just flip it on as I need to develop gnome stuff
   # for now.
   linuxGnome = false;
+  # Unstable package source for Docker
+  unstable = import (builtins.fetchTarball {
+    url = "https://github.com/nixos/nixpkgs/tarball/535734e";
+    sha256 = "sha256:0q2hlqs2ijhczybp8ymnnh4y8j67m71641cpfwg5sigahafncs0h";
+  }) { config = config.nixpkgs.config; system = "aarch64-linux"; };
 in {
   # Be careful updating this.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -56,6 +61,7 @@ in {
 
   # Virtualization settings
   virtualisation.docker.enable = true;
+  virtualisation.docker.package = unstable.docker_24;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
