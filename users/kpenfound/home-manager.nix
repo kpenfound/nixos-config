@@ -74,6 +74,7 @@ in {
 
   home.file.".gdbinit".source = ./gdbinit;
   home.file.".inputrc".source = ./inputrc;
+  home.file.".local/bin/dagger_switch".source = ./dagger_switch;
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ./i3;
