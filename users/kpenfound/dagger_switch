@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -eu
+
+cd /tmp
+
+# Determine which binary
+version=$1
+arch="arm64"
+
+if [ $(uname -m) == "x86_64" ]
+then
+  arch="amd64"
+fi
+
+# Download and extract
+curl -s -L -o dagger.tar.gz https://github.com/dagger/dagger/releases/download/v${version}/dagger_v${version}_linux_${arch}.tar.gz
+tar xf dagger.tar.gz
+
+# Install and cleanup
+mv dagger ~/.local/bin/
+rm dagger.tar.gz LICENSE
+
+echo "Installed Dagger CLI v${version}"
+cd ~-
