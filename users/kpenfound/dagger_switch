@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eu
 
+# dagger_switch: utility for installing Dagger CLI versions
+# usage: dagger_switch X.Y.Z
+
 cd /tmp
 
 # Determine which binary
