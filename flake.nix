@@ -43,11 +43,15 @@
     nvim-treesitter.flake = false;
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs: let
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, darwin, ... }@inputs: let
     # Overlays is the list of overlays we want to apply from flake inputs.
     overlays = [
       inputs.neovim-nightly-overlay.overlay
       inputs.zig.overlays.default
+      (final: prev: {
+        # Go we always want the latest version
+        go = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.go_1_21;
+      })
     ];
 
     mkSystem = import ./lib/mksystem.nix {
