@@ -74,7 +74,7 @@ in {
 
   home.file.".gdbinit".source = ./gdbinit;
   home.file.".inputrc".source = ./inputrc;
-  home.file.".local/bin/dagger_switch".source = ./dagger_switch;
+  home.file.".local/bin/dagger_switch".source = ./dagger_source;
 
   xdg.configFile = {
     "i3/config".text = builtins.readFile ./i3;
@@ -158,6 +158,7 @@ in {
       gs = "git status";
       gt = "git tag";
       syncfork = "git checkout main && git fetch upstream main && git merge upstream/main && git push origin main";
+      unset = "set --erase";
     } // (if isLinux then {
       # Two decades of using a Mac has made this such a strong memory
       # that I'm just going to keep it consistent.
