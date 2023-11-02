@@ -40,15 +40,6 @@ if not __ssh_agent_is_started
     __ssh_agent_start
 end
 
-#-------------------------------------------------------------------------------
-# Ghostty Shell Integration
-#-------------------------------------------------------------------------------
-# Ghostty supports auto-injection but Nix-darwin hard overwrites XDG_DATA_DIRS
-# which make it so that we can't use the auto-injection. We have to source
-# manually.
-if set -q GHOSTTY_RESOURCES_DIR
-    source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
-end
 
 #-------------------------------------------------------------------------------
 # Programs
@@ -95,7 +86,7 @@ set -U fish_color_error FF5555
 set -U fish_color_param 5FFFFF
 set -U fish_color_comment 6272A4
 set -U fish_color_match --background=brblue
-set -U fish_color_selection white --bold --background=brblack
+set -U fish_color_selection white --bold --background=brblue
 set -U fish_color_search_match bryellow --background=brblack
 set -U fish_color_history_current --bold
 set -U fish_color_operator 00a6b2
