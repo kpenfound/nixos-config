@@ -35,6 +35,7 @@ in {
     pkgs.fzf
     pkgs.gcc
     pkgs.gh
+    pkgs.glow
     pkgs.htop
     pkgs.jq
     pkgs.ripgrep
