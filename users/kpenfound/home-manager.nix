@@ -45,7 +45,6 @@ in {
     pkgs.gopls
     pkgs.zigpkgs.master
 
-    # Node is required for Copilot.vim
     pkgs.nodejs
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
@@ -275,7 +274,6 @@ in {
     withPython3 = true;
 
     plugins = with pkgs; [
-      customVim.vim-copilot
       customVim.vim-cue
       customVim.vim-fish
       customVim.vim-fugitive
