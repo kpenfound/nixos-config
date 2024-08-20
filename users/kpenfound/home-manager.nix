@@ -47,6 +47,8 @@ in {
     pkgs.zigpkgs.master
 
     pkgs.nodejs
+
+    pkgs.zed-editor
   ] ++ (lib.optionals isDarwin [
     # This is automatically setup on Linux
     pkgs.cachix
@@ -235,7 +237,7 @@ in {
     settings = {
       env.TERM = "xterm-256color";
 
-      key_bindings = [
+      keyboard.bindings = [
         { key = "K"; mods = "Command"; chars = "ClearHistory"; }
         { key = "V"; mods = "Command"; action = "Paste"; }
         { key = "C"; mods = "Command"; action = "Copy"; }
@@ -315,7 +317,6 @@ in {
 
   services.gpg-agent = {
     enable = isLinux;
-    pinentryFlavor = "tty";
 
     # cache the keys forever so we don't get asked for a password
     defaultCacheTtl = 31536000;
